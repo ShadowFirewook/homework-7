@@ -1,17 +1,17 @@
 package com.example.homework_7.domain.repository
 
 import com.example.homework_7.domain.model.Note
-
+import com.example.homework_7.domain.utils.Resource
+import kotlinx.coroutines.flow.Flow
 
 interface NoteRepository {
 
+    fun createNote(note:Note ): Flow<Resource<Unit>>
 
-    fun createNote(note:Note )
+    fun editNote(note:Note ) :Flow<Resource<Unit>>
 
-    fun editNote(note:Note )
+    fun deleteNote(note:Note ) :Flow<Resource<Unit>>
 
-    fun deleteNote(note:Note )
-
-    fun getNotes(): List<Note>
+    fun getNotes(): Flow <Resource<List<Note>>>
 
 }

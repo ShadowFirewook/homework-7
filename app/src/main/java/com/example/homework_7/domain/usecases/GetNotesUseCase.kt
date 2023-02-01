@@ -1,8 +1,9 @@
 package com.example.homework_7.domain.usecases
 
 import com.example.homework_7.domain.repository.NoteRepository
+import javax.inject.Inject
 
-class GetNotesUseCase(
+class GetNotesUseCase @Inject constructor(
     private val noteRepository: NoteRepository
 ) {
 
