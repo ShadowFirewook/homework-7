@@ -7,14 +7,20 @@
 
     <fragment
         android:id="@+id/notesListFragment"
-        android:name="com.example.homework_7.presentation.NotesListFragment"
+        android:name="com.example.homework_7.presentation.ui.fragments.notes.NotesListFragment"
         android:label="fragment_notes_list"
-        tools:layout="@layout/fragment_notes_list" />
+        tools:layout="@layout/fragment_notes_list" >
+        <action
+            android:id="@+id/action_notesListFragment_to_noteFragment"
+            app:destination="@id/noteFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/noteFragment"
-        android:name="com.example.homework_7.presentation.NoteFragment"
+        android:name="com.example.homework_7.presentation.ui.fragments.add_edit.NoteFragment"
         android:label="fragment_note"
-        tools:layout="@layout/fragment_note" />
+        tools:layout="@layout/fragment_note" >
+
+    </fragment>
 
 </navigation>
