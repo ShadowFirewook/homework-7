@@ -14,6 +14,7 @@ object Versions {
     const val navigation = "2.5.3"
     const val lifecycle = "2.5.1"
     const val viewBindingPropertyDelegate = "1.5.8"
+    const val coroutines = "1.6.4"
 }
 
 object Deps {
@@ -40,6 +41,12 @@ object Deps {
         const val compiler = "com.google.dagger:hilt-compiler:${Versions.hilt}"
     }
 
+    object Coroutines {
+        const val android =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    }
+
     object NavigationComponent {
         const val fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
         const val ui = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
@@ -54,6 +61,10 @@ object Deps {
         const val viewBindingPropertyDelegate = "com.github.kirich1409:viewbindingpropertydelegate-noreflection:${Versions.viewBindingPropertyDelegate}"
     }
 
+    object Javax {
+        const val inject = "javax.inject:javax.inject:1"
+    }
+
 }
 
 object Plugins {
@@ -65,9 +76,14 @@ object Plugins {
     object Kotlin {
         const val android = "org.jetbrains.kotlin.android"
         const val kapt = "kotlin-kapt"
+        const val jvm = "org.jetbrains.kotlin.jvm"
     }
 
     object Dagger {
         const val hilt = "com.google.dagger.hilt.android"
+    }
+
+    object Java {
+        const val library = "java-library"
     }
 }

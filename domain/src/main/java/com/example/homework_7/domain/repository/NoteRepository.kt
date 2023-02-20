@@ -6,11 +6,11 @@ import kotlinx.coroutines.flow.Flow
 
 interface NoteRepository {
 
-    fun createNote(note:Note ): Flow<Resource<Unit>>
+    fun createNote(note: Note): Flow<Resource<Unit>>
 
-    fun editNote(note:Note ) :Flow<Resource<Unit>>
+    fun editNote(note: Note) :Flow<Resource<Unit>>
 
-    fun deleteNote(note:Note ) :Flow<Resource<Unit>>
+    fun deleteNote(note: Note) :Flow<Resource<Unit>>
 
     fun getNotes(): Flow <Resource<List<Note>>>
 

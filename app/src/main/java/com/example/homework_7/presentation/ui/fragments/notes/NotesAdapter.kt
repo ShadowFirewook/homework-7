@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.homework_7.databinding.ItemNoteBinding
 import com.example.homework_7.domain.model.Note
 
-class NotesAdapter: ListAdapter<Note, NotesAdapter.NotesViewHolder>(
+class NotesAdapter: ListAdapter<com.example.homework_7.domain.model.Note, NotesAdapter.NotesViewHolder>(
     NoteDiffUtil()
 ) {
 
     class NotesViewHolder(private val binding: ItemNoteBinding): ViewHolder(binding.root){
-        fun bind(item :Note){
+        fun bind(item : com.example.homework_7.domain.model.Note){
             binding.tvNoteName.text = item.title
         }
     }
@@ -27,13 +27,13 @@ class NotesAdapter: ListAdapter<Note, NotesAdapter.NotesViewHolder>(
         holder.bind(getItem(position))
     }
 
-    private class NoteDiffUtil: DiffUtil.ItemCallback<Note>(){
-        override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
+    private class NoteDiffUtil: DiffUtil.ItemCallback<com.example.homework_7.domain.model.Note>(){
+        override fun areItemsTheSame(oldItem: com.example.homework_7.domain.model.Note, newItem: com.example.homework_7.domain.model.Note): Boolean {
             return oldItem.id == newItem.id
         }
 
         @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
+        override fun areContentsTheSame(oldItem: com.example.homework_7.domain.model.Note, newItem: com.example.homework_7.domain.model.Note): Boolean {
             return oldItem == newItem
         }
 

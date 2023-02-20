@@ -13,4 +13,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "homework-7"
-include(":app")
+include(
+    ":app",
+    ":data",
+    ":domain"
+)

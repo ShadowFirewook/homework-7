@@ -14,7 +14,7 @@ class NoteFragment : BaseFragment(R.layout.fragment_note) {
 
     private val binding by viewBinding(FragmentNoteBinding::bind)
     private val viewModel by viewModels<NoteViewModel>()
-    private var note: Note? = null
+    private var note: com.example.homework_7.domain.model.Note? = null
 
     override fun initialize() {
 
@@ -22,11 +22,13 @@ class NoteFragment : BaseFragment(R.layout.fragment_note) {
 
     override fun setupListeners() {
         binding.btnSave.setOnClickListener{
-            viewModel.createNote(Note(
-                title = binding.tvNoteName.text.toString(),
-                description = binding.tvNoteName.text.toString(),
-                createdAt = System.currentTimeMillis()
-            ))
+            viewModel.createNote(
+                com.example.homework_7.domain.model.Note(
+                    title = binding.tvNoteName.text.toString(),
+                    description = binding.tvNoteName.text.toString(),
+                    createdAt = System.currentTimeMillis()
+                )
+            )
         }
     }
 

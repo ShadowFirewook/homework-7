@@ -21,20 +21,21 @@ object NoteModule {
     @Provides
     fun provideNoteDatabase(
         @ApplicationContext context: Context
-    ): NoteDatabase{
+    ): com.example.homework_7.data.local.NoteDatabase {
         return Room.databaseBuilder(
             context,
-            NoteDatabase::class.java,
+            com.example.homework_7.data.local.NoteDatabase::class.java,
             "note_db"
         ).allowMainThreadQueries().build()
     }
 
     @Singleton
     @Provides
-    fun provideNoteDao(noteDatabase: NoteDatabase) = noteDatabase.noteDao()
+    fun provideNoteDao(noteDatabase: com.example.homework_7.data.local.NoteDatabase) = noteDatabase.noteDao()
 
     @Singleton
     @Provides
-    fun provideNoteRepository(noteDao: NoteDao) : NoteRepository = NoteRepositoryImpl(noteDao)
+    fun provideNoteRepository(noteDao: com.example.homework_7.data.local.NoteDao) : com.example.homework_7.domain.repository.NoteRepository =
+        com.example.homework_7.data.repository.NoteRepositoryImpl(noteDao)
 
 }
