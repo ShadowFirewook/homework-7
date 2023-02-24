@@ -8,14 +8,35 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.homework_7.databinding.ItemNoteBinding
 import com.example.homework_7.domain.model.Note
+import java.util.*
 
-class NotesAdapter: ListAdapter<com.example.homework_7.domain.model.Note, NotesAdapter.NotesViewHolder>(
+class NotesAdapter(
+    private val onTaskClick:(Note) -> Unit,
+    private val onTaskLongClick:(Note) -> Unit
+): ListAdapter<Note, NotesAdapter.NotesViewHolder>(
     NoteDiffUtil()
 ) {
 
-    class NotesViewHolder(private val binding: ItemNoteBinding): ViewHolder(binding.root){
-        fun bind(item : com.example.homework_7.domain.model.Note){
+    inner class NotesViewHolder(private val binding: ItemNoteBinding): ViewHolder(binding.root){
+        fun bind(item: Note){
             binding.tvNoteName.text = item.title
+            binding.tvNoteDescription.text = item.description
+         /*   val s: Date = Date()
+            val f :DateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+            val t = f.format(s)
+            val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+            val ttext = timeFormat.format(s)*/
+
+            binding.tvCreatedAt.text = item.createdAt.toString()
+
+            itemView.setOnClickListener{
+                onTaskClick(item)
+            }
+
+            itemView.setOnLongClickListener{
+                onTaskLongClick(item)
+                true
+            }
         }
     }
 
@@ -27,16 +48,15 @@ class NotesAdapter: ListAdapter<com.example.homework_7.domain.model.Note, NotesA
         holder.bind(getItem(position))
     }
 
-    private class NoteDiffUtil: DiffUtil.ItemCallback<com.example.homework_7.domain.model.Note>(){
-        override fun areItemsTheSame(oldItem: com.example.homework_7.domain.model.Note, newItem: com.example.homework_7.domain.model.Note): Boolean {
+    private class NoteDiffUtil: DiffUtil.ItemCallback<Note>(){
+        override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
             return oldItem.id == newItem.id
         }
 
         @SuppressLint("DiffUtilEquals")
-        override fun areContentsTheSame(oldItem: com.example.homework_7.domain.model.Note, newItem: com.example.homework_7.domain.model.Note): Boolean {
+        override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
             return oldItem == newItem
         }
-
     }
 
 }
